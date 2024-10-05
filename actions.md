@@ -54,6 +54,7 @@ spec:
 
 2. Commit and push the change to the Git repository.
 
+kubectl port-forward svc/reviews 9080:9080 -n reviews
 
 kubectl argo rollouts get rollout reviews-rollout -n reviews --watch
 ```
