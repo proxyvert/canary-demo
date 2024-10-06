@@ -15,18 +15,24 @@ spec:
     spec:
       containers:
       - name: reviews
-        image: docker.io/istio/examples-bookinfo-reviews-v2:1.17.0
+        image: docker.io/istio/examples-bookinfo-reviews-v1:1.17.0
         ports:
         - name: http
           containerPort: 9080
   strategy:
     canary:
+      trafficRouting:
+        istio:
+          virtualService:
+            name: reviews-vs
+            routes:
+            - primary
       steps:
       - setWeight: 20
-      - pause: {duration: 1h}
+      - pause: {duration: 30s}
       - setWeight: 40
-      - pause: {duration: 1h}
+      - pause: {duration: 30s}
       - setWeight: 60
-      - pause: {duration: 1h}
+      - pause: {duration: 30s}
       - setWeight: 80
-      - pause: {duration: 1h}
+      - pause: {duration: 30s}
