@@ -10,9 +10,7 @@ spec:
     route:
     - destination:
         host: reviews-stable
-        subset: stable
       weight: 100
     - destination:
         host: reviews-canary
-        subset: canary
       weight: 0
