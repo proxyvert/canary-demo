@@ -21,6 +21,8 @@ spec:
           containerPort: 9080
   strategy:
     canary:
+      stableService: reviews-stable
+      canaryService: reviews-canary
       trafficRouting:
         istio:
           virtualService:
