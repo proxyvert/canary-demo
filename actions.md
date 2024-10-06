@@ -32,6 +32,7 @@ git remote add origin https://github.com/proxyvert/canary-demo.git
 
 kubectl apply -f argocd/applications/reviews-app.yaml
 
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 kubectl port-forward svc/argocd-server -n argocd 8080:443
 
 
