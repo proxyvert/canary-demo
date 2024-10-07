@@ -76,4 +76,5 @@ spec:
 kubectl port-forward svc/reviews 9080:9080 -n reviews
 
 kubectl argo rollouts get rollout reviews-rollout -n reviews --watch
+watch -n1 "kubectl get virtualservice reviews-vs -n reviews -o yaml | yq e '.spec.http[].route' -"
 ```
